@@ -112,7 +112,7 @@ func syncRepo(repo, dest, branch, rev string) error {
 	log.Printf("reset %q: %v", rev, string(output))
 
 	// set file permissions
-	cmd = exec.Command("chmod", "-R", "744", dest)
+	cmd = exec.Command("chmod", "-R", "755", dest)
 	cmd.Dir = dest
 	output, err = cmd.CombinedOutput()
 	if err != nil {
