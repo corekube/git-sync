@@ -1,0 +1,32 @@
+build:
+  box: golang
+  # The steps that will be executed in the BUILD pipeline
+  steps:
+    # Build git-sync
+    - script:
+        name: build git-sync
+        code: |
+          ./hack/build.sh
+
+    # Test git-sync
+    - script:
+        name: test git-sync
+        code: |
+          ./hack/test-git-sync.sh
+
+    # Build & push a container
+    - internal/docker-push:
+        username: $DOCKER_USERNAME
+        password: $DOCKER_PASSWORD
+        tag: $WERCKER_GIT_COMMIT
+        ports: "5000"
+        repository: $DOCKER_REPO
+        entrypoint: /go/bin/git-sync
+
+  # Notify slack of build status
+  after-steps:
+    # Notify slack
+    - slack-notifier:
+        url: $SLACK_URL
+        channel: notifications
+        username: $SLACK_USER

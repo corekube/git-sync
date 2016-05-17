@@ -6,4 +6,4 @@ export GIT_SYNC_REV="origin/master"
 export GIT_SYNC_DEST="/src"
 export GIT_SYNC_WAIT="-1"
 
-/go/bin/git-sync
+$GOPATH/bin/git-sync
