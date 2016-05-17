@@ -71,8 +71,12 @@ func main() {
 			log.Fatalf("error syncing repo: %v", err)
 		}
 		log.Printf("wait %d seconds", *flWait)
-		time.Sleep(time.Duration(*flWait) * time.Second)
-		log.Println("done")
+		if *flWait != -1 {
+			time.Sleep(time.Duration(*flWait) * time.Second)
+			log.Println("done")
+		} else {
+			break
+		}
 	}
 }
 
