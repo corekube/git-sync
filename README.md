@@ -1,5 +1,10 @@
 # git-sync
 
+[![wercker
+status](https://app.wercker.com/status/ccba0484f70f52f3d436da1a783dbd4b/m
+"wercker
+status")](https://app.wercker.com/project/bykey/ccba0484f70f52f3d436da1a783dbd4b)
+
 git-sync is a command that pull a git repository to a local directory.
 
 It can be used to source a container volume with the content of a git repo.
